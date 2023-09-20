@@ -1,5 +1,4 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
   <Top />
 </template>
 
@@ -23,5 +22,11 @@ export default class App extends Vue {}
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.logo {
+  height: 100px;
+  pointer-events: none;
+  margin-bottom: 40px;
 }
 </style>

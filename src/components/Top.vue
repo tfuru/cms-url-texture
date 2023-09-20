@@ -1,32 +1,33 @@
 <template>
   <div class="top">
     <div class="container">
-      <h1 class="title">cluster 向け File Upload すると Url Texture,Url Raw Image 用 URLを生成するツール</h1>      
+      <h1 class="title">cluster 向け<br />画像ファイルをアップロードするだけで<br />Url Texture,Url Raw Image 用 URLを生成するツール</h1>      
     </div>
     <div class="container">
-      <!-- ファイルアップロード フォーム -->
-      <input class="input" type="text" placeholder="ユニークキー"  v-model="key">
-      <div class="file">
-        <label class="file-label">
-          <input class="file-input" type="file" name="resume" ref="file" @change="uploadFile" accept="image/*">
-          <span class="file-cta">
-            <span class="file-icon">
-              <i class="fas fa-upload"></i>
-            </span>
-            <span class="file-label">
-              Choose a file…
-            </span>
-          </span>
-        </label>
+      <div class="formcontainer">
+        <label class="label">識別するためのユニークな文字列(英数字半角)</label>
+        <div class="fileform">
+          <input class="input key" type="text" placeholder="識別するためのユニークな文字列(英数字半角)"  v-model="key">
+          <div class="file">
+            <label class="file-label">
+              <input class="file-input" type="file" name="resume" ref="file" @change="uploadFile" accept="image/*">
+              <span class="file-cta">
+                <span class="file-label">ファイル選択</span>
+              </span>
+            </label>
+          </div>
+        </div>
       </div>
     </div>
     <div class="container">
-      <!-- アップロードした画像を表示 -->
-      <input class="input" type="text" placeholder="Url Textureに設定するURL" :value="fileUrl">
-      <figure class="image is-128x128">
+      <div class="formcontainer">
+        <label class="label">Url Texture,Url Raw Image に設定するURL</label>
+        <input class="input fileUrl" type="text" placeholder="Url Textureに設定するURL" :value="fileUrl">
+      </div>
+      <figure class="image">
         <img v-if="fileUrl == ''" :src="require('../assets/dummy.png')" alt="128x128" >
         <img v-else :src="fileDataUrl" alt="128x128" >
-      </figure>
+      </figure>      
     </div>
   </div>
 </template>
@@ -77,5 +78,47 @@ export default class Top extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+
+.container {
+  margin: 10px auto;
+  width: 800px;
+
+  border-bottom: 1px solid #ccc;
+}
+
+.title {
+  margin-bottom: 40px;
+}
+
+.fileform {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: flex-start;
+  margin-bottom: 20px;
+
+  .key {
+    width: 350px;
+  }
+}
+
+.formcontainer {
+  width: 500px;
+  margin: 0 auto;
+  .label {
+    width: 350px;
+    text-align: left;
+  }
+  .fileUrl {
+    float: left;
+    width: 500px;
+    margin-bottom: 10px;
+  }
+}
+
+.image {
+  margin: 40px auto;
+  width: 300px;
+}
 
 </style>
