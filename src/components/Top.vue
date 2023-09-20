@@ -25,7 +25,7 @@
         <input class="input fileUrl" type="text" placeholder="Url Textureに設定するURL" :value="fileUrl">
       </div>
       <figure class="image">
-        <img v-if="fileUrl == ''" :src="require('../assets/dummy.png')" alt="128x128" >
+        <img v-if="fileUrl == ''" :src="require('../assets/logo.png')" alt="128x128" >
         <img v-else :src="fileDataUrl" alt="128x128" >
       </figure>      
     </div>
